@@ -1,8 +1,8 @@
 
-## blogsテーブル
+## contentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|text|null: false|
 |user_id|reference|null: false, foreign_key: true|
 
 ### Association
