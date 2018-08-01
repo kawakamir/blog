@@ -12,7 +12,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true|
-|email|string|null: false, unique: true |
+|email|string|null: false |
 |password|string|null: false |
 
 ### Association
