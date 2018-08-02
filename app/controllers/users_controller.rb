@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
 
   def show
+    user = User.find(current_user.id)
     @name = current_user.name
-    @blogs = current_user.blogs
+    @contents = user.contents
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email)
-  end
 end
