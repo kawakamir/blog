@@ -1,1 +1,5 @@
-<%= render partial: "devise/contents", locals: {content: content} %>
+<div class="contents">
+  <% @contents.each do |content| %>
+    <%= render partial:"contents/contents", locals: {content: content} %>
+  <% end %>
+</div>
