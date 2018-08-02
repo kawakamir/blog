@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
 
   def index
-    @contents = Content.all
+    @contents = Content.order("created_at DESC")
   end
 
   def new
@@ -17,7 +17,7 @@ class ContentsController < ApplicationController
 
   def create
     @contents = Content.create(content_params)
-    redirect_to user_path(content_params[:user_id])
+    redirect_to contents_path
   end
 
   def edit
@@ -29,7 +29,7 @@ class ContentsController < ApplicationController
     if content.user_id == current_user.id
       content.update(content_params)
     end
-    redirect_to root_path
+    redirect_to contents_path
   end
 
 
