@@ -1,13 +1,15 @@
+<div class="content-name">
+  <%= simple_format(content.user.name) %>
+</div>
+
 <div class="content-text">
   <%= simple_format(content.text) %>
 </div>
 
+<% if user_signed_in? && current_user.id == cotent.user_id %>
 <a class="btn">
-  SHOW
+  <%= link_to 'EDIT', "/contents/#{content.id}/edit", method: :get %>
 </a>
 <a class="btn">
-  EDIT
-</a>
-<a class="btn">
-  DELETE
+  <%= link_to 'DELETE', "/contents/#{content.id}", method: :delete %>
 </a>
