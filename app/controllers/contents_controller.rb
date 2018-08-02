@@ -1,10 +1,11 @@
 class ContentsController < ApplicationController
 
   def index
-    @contents = Content.order("created_at DESC")
+    @contents = Content.all
   end
 
   def new
+    @content = Content.new
   end
 
   def destroy
@@ -26,13 +27,14 @@ class ContentsController < ApplicationController
   def update
     content = Content.find(params[:id])
     if content.user_id == current_user.id
-      content.update(tweet_params)
+      content.update(content_params)
     end
+    redirect_to root_path
   end
 
 
-  def cotent_params
-    params.permit(:text).merge(user_id: current_user.id)
+  def content_params
+    params.require(:content).permit(:text).merge(user_id: current_user.id)
   end
 
 end

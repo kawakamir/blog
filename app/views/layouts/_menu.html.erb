@@ -1,0 +1,24 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Blog</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "Sing-out", destroy_user_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to "New", new_content_path, method: :get %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "Sing-in", new_user_session_path, method: :get %>
+      </li>
+      <li>
+        <%= link_to "Sing-up", new_user_registration_path, method: :get %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</nav>
+
+<script type="text/javascript" src="./index.js"></script>
