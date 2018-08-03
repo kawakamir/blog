@@ -1,14 +1,14 @@
 <div class="container">
   <%= form_for [@content] do |f| %>
   <p>
-    編集する
+    新規に作成する
   </p>
   <div class="container__text">
     <%= f.label :text %><br />
     <%= f.text_field :text %><br />
   </div>
   <div class="container__actions">
-    <%= f.submit "更新する" %>
+    <%= f.submit "新規作成" %>
   </div>
   <% end %>
 </div>

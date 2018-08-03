@@ -1,16 +1,17 @@
-<div class="content-name">
-  <%= simple_format(content.user.name) %>
+<div class="card green lighten-5">
+  <p class="z-depth-3"></p>
+  <div class="card-content blue-grey-text darken-5">
+    <span class="card-title"><%= content.user.name %></span>
+    <p><%= content.text %></p>
+  </div>
+  <% if user_signed_in? && current_user.id == content.user_id %>
+  <div class="card-action">
+    <div class="btn blue lighten-5">
+      <%= link_to 'EDIT', "/contents/#{content.id}/edit", method: :get %>
+    </div>
+    <div class="btn blue lighten-5">
+      <%= link_to 'DELETE', "/contents/#{content.id}", method: :delete %>
+    </div>
+  </div>
+  <% end %>
 </div>
-
-<div class="content-text">
-  <%= simple_format(content.text) %>
-</div>
-
-<% if user_signed_in? && current_user.id == content.user_id %>
-<div class="btn blue lighten-5">
-  <%= link_to 'EDIT', "/contents/#{content.id}/edit", method: :get %>
-</div>
-<div class="btn blue lighten-5">
-  <%= link_to 'DELETE', "/contents/#{content.id}", method: :delete %>
-</div>
-<% end %>

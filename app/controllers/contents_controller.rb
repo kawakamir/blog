@@ -13,6 +13,7 @@ class ContentsController < ApplicationController
     if content.user_id == current_user.id
       content.destroy
     end
+    redirect_to contents_path
   end
 
   def create
