@@ -7,7 +7,7 @@
     </div>
     <div class="card-action">
       <% if user_signed_in? %>
-        <%= form_for [@content, @comment] do |f| %>
+        <%= form_for [@content, @comment], :url => {:action => 'create'} do |f| %>
           <ul class="collection">
             <li class="collection-item">
               <span class="title"><% current_user.name %></span>
@@ -20,16 +20,8 @@
         <% end %>
       <% end %>
     </div>
-
-    <% if current_user %>
-      <%= form_tag("/tweets/#{@tweet.id}/comments",  method: :post,  id: "new_comment" ) do %>
-        <textarea cols="30" name="text" placeholder="コメントする" rows="2" class="textbox"></textarea>
-        <input type="submit" value="SENT">
-      <% end %>
-    <% end %>
-
     <% if @comments %>
-      <% @commenets.each do |comment| %>
+      <% @comments.each do |comment| %>
 
           <ul class="collection">
             <li class="collection-item">
