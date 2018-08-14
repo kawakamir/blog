@@ -7,30 +7,32 @@
     </div>
     <div class="card-action">
       <% if user_signed_in? %>
-        <%= form_for [@content, @comment], :url => {:action => 'create'} do |f| %>
-          <ul class="collection">
+        <%= form_for [@content, @comment], url: content_comments_path do |f| %>
+          <ul class="collection white">
+            <li class="collection-header">
+              <h5>
+                <%= current_user.name %>
+              </h5>
+            <li>
             <li class="collection-item">
-              <span class="title"><% current_user.name %></span>
-              <p>
-               <% f.text_field :content, class: 'form__message', placeholder: 'type a message' %>
-              </p>
-              <% f.submit 'send', class: 'material-icons' %>
+              <%= f.label :text %>
+              <%= f.text_field :text, class: 'secondary-content', placeholder: 'type a message' %>
             </li>
+            <%= f.button class: "waves-effect waves-light btn ", type: :submit %>
           </ul>
         <% end %>
       <% end %>
-    </div>
-    <% if @comments %>
-      <% @comments.each do |comment| %>
-
-          <ul class="collection">
-            <li class="collection-item">
-              <span class="title"><%= comment.user.name %></span>
-              <%= simple_format(comment.text) %>
-            </li>
-          </ul>
-        </div>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+            <ul class="collection">
+              <li class="collection-item">
+                <span class="title"><%= comment.user.name %></span>
+                <%= simple_format(comment.text) %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

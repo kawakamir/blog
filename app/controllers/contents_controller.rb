@@ -37,10 +37,9 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     @comment = Comment.new
     @comments = @content.comments.includes(:user)
-
   end
 
-
+  private
   def content_params
     params.require(:content).permit(:text).merge(user_id: current_user.id)
   end
