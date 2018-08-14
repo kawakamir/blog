@@ -33,6 +33,11 @@ class ContentsController < ApplicationController
     redirect_to contents_path
   end
 
+  def show
+    @content = Content.find(params[:id])
+    @comments = @content.comments.includes(:user)
+  end
+
 
   def content_params
     params.require(:content).permit(:text).merge(user_id: current_user.id)
