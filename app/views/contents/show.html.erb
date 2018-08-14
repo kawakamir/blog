@@ -5,15 +5,40 @@
       <span class="card-title"><%= @content.user.name %></span>
       <p><%= @content.text %></p>
     </div>
-    <% if user_signed_in? %>
     <div class="card-action">
-      <ul class="collection">
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
-        <li class="collection-item">Alvin</li>
-      </ul>
+      <% if user_signed_in? %>
+        <%= form_for [@content, @comment] do |f| %>
+          <ul class="collection">
+            <li class="collection-item">
+              <span class="title"><% current_user.name %></span>
+              <p>
+               <% f.text_field :content, class: 'form__message', placeholder: 'type a message' %>
+              </p>
+              <% f.submit 'send', class: 'material-icons' %>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
     </div>
+
+    <% if current_user %>
+      <%= form_tag("/tweets/#{@tweet.id}/comments",  method: :post,  id: "new_comment" ) do %>
+        <textarea cols="30" name="text" placeholder="コメントする" rows="2" class="textbox"></textarea>
+        <input type="submit" value="SENT">
+      <% end %>
+    <% end %>
+
+    <% if @comments %>
+      <% @commenets.each do |comment| %>
+
+          <ul class="collection">
+            <li class="collection-item">
+              <span class="title"><%= comment.user.name %></span>
+              <%= simple_format(comment.text) %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
