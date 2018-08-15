@@ -6,5 +6,5 @@
     </li>
   </ul>
   <%= link_to "delete", "/contents/#{@content.id}/comments/#{comment.id}", method: :delete, class: "comment-delete" %>
-  <a class="edit" id="<%= comment.id %>" content_id= "<%@content.id%>">edit</a>
+  <a class="edit" id="<%= comment.id %>" content_id= "<%= @content.id %>">edit</a>
 </div>
