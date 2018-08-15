@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_group
+  before_action :set_content
 
   def create
     @comment = @content.comments.create(comment_params)
@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:text, :content_id).merge(user_id: current_user.id)
   end
 
-  def set_group
+  def set_content
     @content = Content.find(params[:content_id])
   end
 end
