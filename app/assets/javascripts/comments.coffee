@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on 'click', 'a.edit', ->
+    id= $(this).attr('id')
+    content_id=
+    $.get("pages/ajax/#{id}/edit")
+
+$(document).on 'click', 'a.close', ->
+    id= $(this).attr('id')
+    $.get("/pages/ajax/#{id}")

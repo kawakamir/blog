@@ -6,29 +6,25 @@
       <p><%= @content.text %></p>
     </div>
     <div class="card-action">
-      <% if user_signed_in? %>
-        <%= form_for [@content, @comment] do |f| %>
-          <ul class="collection white">
-            <li class="collection-header">
-              <h5><%= current_user.name %></h5>
-            </li>
-            <li class="collection-item">
-              <%= f.text_field :text, class: 'secondary-content', placeholder: 'type a message' %>
-            </li>
-            <%= f.button class: "waves-effect waves-light btn ", type: :submit %>
-          </ul>
-        <% end %>
-      <% end %>
     </div>
   </div>
+  <div class= "comments" id="<%=content.id %>">
     <% if @comments %>
       <% @comments.each do |comment| %>
-        <ul class="collection">
+        <%= render partial: "comments", locals:{comment: comment} %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class= "comments">
+    <% if user_signed_in? %>
+      <%= form_for [@content, @comment] do |f| %>
+        <ul class="collection white">
           <li class="collection-item">
-            <span class="title"><%= comment.user.name %></span>
-            <%= simple_format(comment.text) %>
+            <span class="title"><%= current_user.name %></span>
+            <%= f.text_field :text, class: 'secondary-content', placeholder: 'コメントをする' %>
           </li>
         </ul>
+        <%= f.button class: "waves-effect waves-light btn ", type: :submit %>
       <% end %>
     <% end %>
   </div>

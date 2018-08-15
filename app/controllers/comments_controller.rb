@@ -6,6 +6,16 @@ class CommentsController < ApplicationController
     redirect_to content_path(@content)
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    @comment.update(comment_params)
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:text, :content_id).merge(user_id: current_user.id)

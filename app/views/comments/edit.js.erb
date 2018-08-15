@@ -1,0 +1,13 @@
+
+$(document).on('click', 'a.edit', function() {
+  var id;
+  id = $(this).attr('id');
+  return $.get("pages/ajax/" + id + "/edit");
+});
+
+
+
+$('#comment_field').val('');
+$('#comments').html(
+  '<%= j(render partial: 'prototypes/comment', collection: @prototype.comments) %>'
+);

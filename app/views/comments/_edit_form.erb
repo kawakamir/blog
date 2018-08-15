@@ -1,0 +1,4 @@
+  <%= form_for [@content comment], id: "edit_comment_#{comment.id}", class: "edit_comment", data: comment.id , data: { remote: true }) do |f| %>
+    <%= f.text_field :title %>
+    <%= f.submit('更新') %>
+  <% end %>
