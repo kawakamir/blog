@@ -1,9 +1,7 @@
 <div style="text-align: right;">
     <a class="close"><%= fa_icon "times" -%></a>
 </div>
-<%= form_for([@content comment], data: {remote: true }) do |f| %>
-  <%= f.text_field :title %>
+<%= form_for [@content, @comment], data: {remote: true } do |f| %>
+  <%= f.text_field :text %>
   <%= f.submit('更新') %>
 <% end %>
-
-

@@ -3,6 +3,6 @@ $(function(){
     var content_id, id;
     id = $(this).attr('id');
     content_id = $(this).attr('content_id');
-    return $.get("contents/" + content_id + "/comments/" + id + "/edit");
+    return $.get( content_id + "/comments/" + id + "/edit");
   });
 })
