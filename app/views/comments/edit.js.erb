@@ -1,6 +1,5 @@
 $(function(){
-  console.log('hello')
-  $( ('#comment-<%= @comment.id %>' ) ).html('<%=
+  $( ('#<%= @comment.id %>' ) ).html('<%=
     j( render( 'edit_form' ) )
   %>');
 })
