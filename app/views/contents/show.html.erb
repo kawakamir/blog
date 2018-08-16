@@ -17,7 +17,7 @@
   </div>
   <div class= "comments">
     <% if user_signed_in? %>
-      <%= form_for [@content, @comment] do |f| %>
+      <%= form_for [@content, @comment] ,remote: true do |f| %>
         <ul class="collection white">
           <li class="collection-item">
             <span class="title"><%= current_user.name %></span>

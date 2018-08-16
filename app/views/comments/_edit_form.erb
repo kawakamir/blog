@@ -1,8 +1,7 @@
-<span class="title"><%= @comment.user.name %></span>
-<div style="text-align: right;">
-    <a class="close"><%= fa_icon "times" -%></a>
-</div>
+<span class="title" ><%= @comment.user.name %></span>
 <%= form_for [@content, @comment], data: {remote: true } do |f| %>
   <%= f.text_field :text %>
-  <%= f.submit('更新') %>
+  <%= f.button class: "waves-effect waves-light btn ",class: "edit-close", type: :submit %>
 <% end %>
+</br>
+<a class = "show">元に戻す</a>

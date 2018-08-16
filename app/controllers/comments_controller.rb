@@ -6,7 +6,13 @@ class CommentsController < ApplicationController
     redirect_to content_path(@content)
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+  end
+
   def show
+    @comment = Comment.find(params[:id])
   end
 
   def edit

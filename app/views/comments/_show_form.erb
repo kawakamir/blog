@@ -1,10 +1,10 @@
-<div class="comment" id="<%= comment.id %>" content_id= "<%= @content.id %>">
+<div class="comment" id="<%= @comment.id %>" content_id= "<%= @content.id %>">
   <ul class="collection">
     <li class="collection-item">
-      <span class="title"><%= comment.user.name %></span>
-      <%= simple_format(comment.text) %>
+      <span class="title"><%= @comment.user.name %></span>
+      <%= simple_format(@comment.text) %>
     </li>
   </ul>
-  <%= link_to "delete", "/contents/#{@content.id}/comments/#{comment.id}", method: :delete, class: "comment-delete" %>
+  <%= link_to "delete", "/contents/#{@content.id}/comments/#{@comment.id}", method: :delete, class: "comment-delete", remote: true  %>
   <a class="edit" >edit</a>
 </div>

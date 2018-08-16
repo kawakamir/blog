@@ -1,5 +1,4 @@
-$(document).on('click', 'a.close', function() {
-  var id;
-  id = $(this).attr('id');
-  return $.get("/pages/ajax/" + id);
-});
+$(function(){
+  $( ('#<%= @comment.id %>' ) ).html('');
+})
+
