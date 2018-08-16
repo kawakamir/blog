@@ -14,12 +14,13 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @comment = Comment.find(params[:id])
     @comment.update(comment_params)
   end
 
   private
   def comment_params
-    params.require(:comment).permit(:text, :content_id).merge(user_id: current_user.id)
+    params.require(:comment).permit(:text).merge(user_id: current_user.id).merge(content_id: @content.id)
   end
 
   def set_content
