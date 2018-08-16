@@ -8,7 +8,7 @@
     <div class="card-action">
     </div>
   </div>
-  <div class= "comments" id="<%=@content.id %>">
+  <div class= "comments" id="comments-adding">
     <% if @comments %>
       <% @comments.each do |comment| %>
         <%= render partial: "comments", locals:{comment: comment} %>
@@ -24,7 +24,7 @@
             <%= f.text_field :text, class: 'secondary-content', placeholder: 'コメントをする' %>
           </li>
         </ul>
-        <%= f.button class: "waves-effect waves-light btn ", type: :submit %>
+        <%= f.button class: "waves-effect waves-light btn ", id: "comments-create", type: :submit %>
       <% end %>
     <% end %>
   </div>

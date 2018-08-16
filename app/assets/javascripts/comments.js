@@ -14,11 +14,17 @@ $(function(){
   });
 
   $(document).on('click', '.comment-delete', function() {
-    console.log('hello')
     var content_id, id;
     id = $(this).parent().attr('id');
     content_id = $(this).parent().attr('content_id');
     $( '#'+ id ).fadeOut();
   });
+
+  $(document).on('ajax:complete', '.new_comment', function(event, ajax, status){
+    var response;
+    response = $.parseJSON(ajax.responseText);
+    $('#comments-adding').append(response.html);
+    $('form')[0].reset();
+  })
 })
 

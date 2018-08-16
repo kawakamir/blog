@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @content.comments.create(comment_params)
-    redirect_to content_path(@content)
+    html = render_to_string partial: 'contents/comments', locals: { comment: @comment }
+    render :json => {:html => html}
   end
 
   def destroy
