@@ -6,7 +6,7 @@ $(function(){
     return $.get( content_id + "/comments/" + id + "/edit");
   });
 
-  $(document).on('click', 'a.show', function() {
+  $(document).on('ajax:complete', '.edit_comment', function() {
     var content_id, id;
     id = $(this).parent().attr('id');
     content_id = $(this).parent().attr('content_id');
